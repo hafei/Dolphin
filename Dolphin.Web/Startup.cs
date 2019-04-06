@@ -33,6 +33,12 @@ namespace Dolphin.Web
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDistributedRedisCache(option =>
+            {
+                option.Configuration = Configuration.GetConnectionString("Redis");
+                //option.InstanceName = "master";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
